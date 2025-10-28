@@ -5,7 +5,19 @@ import { z } from "zod";
 const mcp = new McpServer({
   name: "atlas-agent-mcp-server",
   version: "1.0.0",
-  schemaAdapter: (schema) => z.toJSONSchema(schema as z.ZodType),
+  schemaAdapter: (schema) => {
+    const jsonSchema = z.toJSONSchema(schema as z.ZodType);
+    if (
+      jsonSchema &&
+      typeof jsonSchema === "object" &&
+      !Array.isArray(jsonSchema)
+    ) {
+      // Strip meta-schema markers the host validator doesn't understand yet.
+      const { $schema, ...rest } = jsonSchema as Record<string, unknown>;
+      return rest;
+    }
+    return jsonSchema;
+  },
 });
 
 const ATLAS_AGENT_API_URL =
