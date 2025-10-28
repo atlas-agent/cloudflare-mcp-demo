@@ -3,7 +3,7 @@ import { McpServer, StreamableHttpTransport } from "mcp-lite";
 import { z } from "zod";
 
 const mcp = new McpServer({
-  name: "atlas-agent-mcp-server",
+  name: "cloudflare-mcp-demo",
   version: "1.0.0",
   schemaAdapter: (schema) => z.toJSONSchema(schema as z.ZodType),
 });
@@ -25,7 +25,7 @@ function generateRoomName(): string {
 
 async function callAtlasAgentApi(
   reportType: "salesCMA" | "rentalCMA",
-  { listingAddress, email }: GenerateCompsInput,
+  { listingAddress, email }: GenerateCompsInput
 ) {
   const roomName = generateRoomName();
   const response = await fetch(ATLAS_AGENT_API_URL, {
@@ -46,7 +46,7 @@ async function callAtlasAgentApi(
 
   if (!response.ok) {
     throw new Error(
-      `Atlas Agent API error ${response.status}: ${responseText}`,
+      `Atlas Agent API error ${response.status}: ${responseText}`
     );
   }
 
