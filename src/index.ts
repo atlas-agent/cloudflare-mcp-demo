@@ -3,7 +3,7 @@ import { McpServer, StreamableHttpTransport } from "mcp-lite";
 import { z } from "zod";
 
 const mcp = new McpServer({
-  name: "cloudflare-mcp-demo",
+  name: "atlas-agent-mcp-server",
   version: "1.0.0",
   schemaAdapter: (schema) => z.toJSONSchema(schema as z.ZodType),
 });
