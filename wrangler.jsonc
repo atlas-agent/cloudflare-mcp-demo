@@ -2,19 +2,20 @@
   "$schema": "node_modules/wrangler/config-schema.json",
   "name": "cloudflare-mcp-demo",
   "main": "src/index.ts",
-  "compatibility_date": "2025-10-07"
+  "compatibility_date": "2025-10-07",
   // "compatibility_flags": [
   //   "nodejs_compat"
   // ],
   // "vars": {
   //   "MY_VAR": "my-variable"
   // },
-  // "kv_namespaces": [
-  //   {
-  //     "binding": "MY_KV_NAMESPACE",
-  //     "id": "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
-  //   }
-  // ],
+  "kv_namespaces": [
+    {
+      "binding": "KV_NAMESPACE",
+      "id": "9642a919d3204b758fd463e5088eac66",
+      "remote": true
+    }
+  ]
   // "r2_buckets": [
   //   {
   //     "binding": "MY_BUCKET",
